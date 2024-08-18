@@ -268,11 +268,11 @@ function insert_span() {
 }
 
 function set_title() {
-  txt.innerHTML =  "<title>CT Documents - " + doctit.value + "</title>" + txt.innerHTML;
+  txt.innerHTML =  "<title>CleanDocs - " + doctit.value + "</title>" + txt.innerHTML;
   replaceBadContent();
 }
 
-doctit.value = document.title.replace("CT Documents - ","");
+doctit.value = document.title.replace("CleanDocs - ","");
 
 function replaceBadContent() {
   txt.innerHTML = txt.innerHTML.replace("%"," percent");
@@ -328,11 +328,11 @@ function downloadInnerHtml2(filename, elId, mimeType) {
   link.setAttribute('href', 'data:' + mimeType + ';charset=utf-8,' + encodeURIComponent(elHtml));
   link.click(); 
 }
-var fileName2 = document.title.replace("CT Documents - ","") + ".html";
-var fileName = document.title.replace("CT Documents - ","") + ".txt";
+var fileName2 = document.title.replace("CleanDocs - ","") + ".html";
+var fileName = document.title.replace("CleanDocs - ","") + ".txt";
 </script>
 <script>
 pairhoverseeclick(insertc2,insertc);
 pairhoverseeclick(sdc2,sdc)
 </script>
-<title>CT Documents</title>
+<title>CleanDocs</title>
