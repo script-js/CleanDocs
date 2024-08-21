@@ -60,10 +60,9 @@
 	<a href="text-viewer.html?text=" target="_blank"><img src="ico-High-Quality.jpg" title="New Document" id="newdimg"></a> <div class="inline-icon-content" style="display: inline-block;"><input id="doctit" placeholder="Document Title" onchange="set_title()" maxlength="35">
   <button id="insertc2">Insert</button>
   <button id="sdc2">Saved Documents</button> 
-  <a href="https://sites.google.com/edmonds15.org/cthelp/articles/documents" target="_blank"><button>Help Center</button></a> <button onclick="ls()">Save</button>
+  <button onclick="ls()">Save</button>
   <button onclick="check()">Print</button>
   <button onclick="window.open('read.html?text=' + txt.innerText)">Read (Expirimental)</button>
-  <button onclick="replaceBadContent()">Make Document safe</button>
   <button onclick="location.replace('editor.html?code=' + encodeURI(txt.innerHTML))">Edit as HTML</button>
   Box Size: <input type="range" id="bxsz" min="400" max="5000" onchange="bsic()" width="180" value="400">
   </div>
@@ -135,11 +134,6 @@
   </div>
   
 </div>
-<div>
-  <p>Fullscreen</p>
-  <button onclick="fullscreen()">Fullscreen</button>
-  <button onclick='nf()' id='meow' style>Exit Fullscreen</button>
-</div>
 <script>
 function sc() {
   txt.style = "width: 100%; height: " + bxsz.value + ";";
@@ -152,25 +146,6 @@ function ls() {
 
 function check() {
   window.print();
-}
-
-function fullscreen() {
-  controls.style = "display: none;";
-  txt.style = "color: " + tc.value + "; background-color: " + bc.value + ";   font-family: " + font.value + "; font-size: " + size.value + "; width: 100%; min-height: 1000px; border: none;";
-  para.style = "display: none;"
-  meow.style = "display: block; background-color: " + bc.value + "; color: " + tc.value;
-  document.body.style.backgroundColor = bc.value;
-}
-
-function nf() {
-  txt.spellcheck = true;
-  controls.style = "display: block;";
-  txt.style = "color: " + tc.value + "; background-color: " + bc.value + ";   font-family: " + font.value + "; font-size: " + size.value + "; width: 100%; min-height: 400px;";
-  para.style = "display: block; float: right;"
-  meow.style = "display: none";
-  document.body.style.backgroundColor = "white";
-  document.exitFullscreen();
-  document.webkitExitFullscreen();
 }
 
 var li = window.location.href;
