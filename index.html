@@ -131,17 +131,17 @@
     <option value="'Redressed', cursive;" style="font-family: 'Redressed', cursive;">Redressed</option>
     <option value="'Shippori Mincho', serif;" style="font-family: 'Shippori Mincho', serif;">Shippori Mincho</option>
   </select>Bold: <input type="checkbox" id="bold2">Underline: <input type="checkbox" id="under2"> Italic: <input type="checkbox" id="ita2"><button onclick="csts()">Go</button><button onclick="sel_reset()">Reset To Default</button>
-  </div>
-  
 </div>
+  
+<div id='txt' style='width: 100%; height: 570px;'>/div>
+<script src="import.js"></script>
 <script>
 function sc() {
   txt.style = "width: 100%; height: " + bxsz.value + ";";
 }
 
 function ls() {
-  replaceBadContent();
-  location.replace("?text=" + txt.innerHTML)
+  location.replace("?text=" + btoa(txt.innerHTML))
 }
 
 function check() {
@@ -152,10 +152,12 @@ var li = window.location.href;
 
 var li = new URLSearchParams(window.location.search).get("text");
 
-var link = (decodeURI(li));
-link.replace("%0A","&#10")
-
-document.write("<div id='txt' contentEditable='true' style='width: 100%; height: 570px;' placeholder='Type Here...' spellcheck='true' tabindex='-1'>" + link + "</div>");
+var link = atob(li.replaceAll(" ","+"));
+if (link) {
+  cleandocs.createBox(txt,link)
+} else {
+  cleandocs.createBox(txt)
+}
 lin.value = location.href;
 
 function insert_img() {
