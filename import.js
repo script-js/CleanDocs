@@ -1,7 +1,6 @@
 var cleandocs = {
   createBox: function(container,text) {
     container.style.border = "1px solid black"
-    container.style.borderBottomWidth = "0px"
     var hidden = document.createElement("span")
     hidden.hidden = true
     hidden.innerHTML = `<style>
