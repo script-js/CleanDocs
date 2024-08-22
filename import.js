@@ -112,7 +112,7 @@ input[type="color"] {
 			break;
 		case "Underline": elem.parentElement.parentElement.querySelector('#doc').style.textDecoration = "none" 
 			break;
-		case "Italic": elem.parentElement.parentElement.querySelector('#doc').style.fontStyle = "none" 
+		case "Italic": elem.parentElement.parentElement.querySelector('#doc').style.fontStyle = "normal" 
 			break;
 	}
       }
