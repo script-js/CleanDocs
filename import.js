@@ -1,5 +1,5 @@
 var cleandocs = {
-  createBox: function(container,text,expand) {
+  createBox: function(container,expand,text) {
     container.style.border = "1px solid black"
     var hidden = document.createElement("span")
     hidden.hidden = true
