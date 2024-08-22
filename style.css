@@ -12,8 +12,7 @@
 #txt {
   font-size: 15px;
   border: 1px solid;
-  white-space: pre-wrap;
-  font-family: 'Open Sans', sans-serif;
+  border-bottom-width: 0px;
 }
 
 input[type="color"] {
