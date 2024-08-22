@@ -120,9 +120,12 @@ input[type="color"] {
       elem.classList = "CDToggle active"
       if (elem.parentElement.id == "controlsTop") {
 	switch (elem.title) {
-		case "Bold": elem.parentElement.parentElement.querySelector('#doc').style.fontWeight = "bold" break;
-		case "Underline": elem.parentElement.parentElement.querySelector('#doc').style.textDecoration = "underline" break;
-		case "Italic": elem.parentElement.parentElement.querySelector('#doc').style.fontStyle = "italic" break;
+		case "Bold": elem.parentElement.parentElement.querySelector('#doc').style.fontWeight = "bold" 
+			break;
+		case "Underline": elem.parentElement.parentElement.querySelector('#doc').style.textDecoration = "underline" 
+			break;
+		case "Italic": elem.parentElement.parentElement.querySelector('#doc').style.fontStyle = "italic" 
+			break;
 	}
       }
     }
