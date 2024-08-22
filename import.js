@@ -1,5 +1,5 @@
 var cleandocs = {
-  createBox: function(container,text) {
+  createBox: function(container,text,expand) {
     container.style.border = "1px solid black"
     var hidden = document.createElement("span")
     hidden.hidden = true
@@ -53,22 +53,10 @@ input[type="color"] {
     var controlsTop = document.createElement("div")
     controlsTop.id = "controlsTop"
     controlsTop.classList = "CDflex"
-    controlsTop.innerHTML = `<div type="color" id="tcP" class="CDPrev">Aa</div><input type="color" id="tc" onchange="this.parentElement.querySelector('#tcP').style.color = this.value;this.parentElement.parentElement.querySelector('#doc').style.color = this.value">
-    <div id="bcP" type="color" class="CDPrev">Aa</div><input type="color" id="bc" value="#ffffff" onchange="this.parentElement.parentElement.querySelector('#controlsTop').querySelector('#bcP').style.backgroundColor = this.value;this.parentElement.parentElement.querySelector('#doc').style.backgroundColor = this.value">
-    <input id="size2" placeholder="15px" list="size-suggestions" onchange="this.parentElement.parentElement.querySelector('#doc').style.fontSize = this.value">
-    <datalist id="size-suggestions">
-		<option value="15px">Normal Text</option>
-		<option value="20px"></option>
-		<option value="30px">Heading 2</option>
-		<option value="40px">Heading 1</option>
-		<option value="50px">Title</option>
-		<option value="60px"></option>
-		<option value="70px">Big Title</option>
-		<option value="80px"></option>
-		<option value="90px"></option>
-		<option value="100px"></option>
-	</datalist>
-  <select id="font2" onchange="this.parentElement.parentElement.querySelector('#doc').style.fontFamily = this.value">
+    controlsTop.innerHTML = `<div type="color" id="tcP" class="CDPrev">Aa</div><input type="color" id="tc" onchange="this.parentElement.querySelector('#tcP').style.color = this.value;cleandocs.editSelection('color:' + this.value)"> |
+    <div id="bcP" type="color" class="CDPrev">Aa</div><input type="color" id="bc" value="#ffffff" onchange="this.parentElement.parentElement.querySelector('#controlsTop').querySelector('#bcP').style.backgroundColor = this.value;cleandocs.editSelection('background-color:' + this.value)"> |
+    <input id="size2" min="10" max="100" type="range" onchange="cleandocs.editSelection('font-size:' + this.value + 'px')"> |
+  <select id="font2" onchange="cleandocs.editSelection('font-family:' + this.value)">
     <option value="'Open Sans', sans-serif" style="font-family: 'Open Sans', sans-serif;">OpenSans</option>
     <option style="font-family: 'Times New Roman', Times, serif" value="'Times New Roman', Times, serif">Times New Roman</option>
     <option value="sans-serif" style="font-family: sans-serif;">Sans-Serif</option>
@@ -84,10 +72,12 @@ input[type="color"] {
     <option style="font-family: 'Akaya Telivigala', cursive;" value="'Akaya Telivigala', cursive">Akaya Telivigala</option>
     <option value="'Redressed', cursive" style="font-family: 'Redressed', cursive;">Redressed</option>
     <option value="'Shippori Mincho', serif" style="font-family: 'Shippori Mincho', serif;">Shippori Mincho</option>
-  </select>
+  </select> |
   <div class="CDToggle" title="Bold" onclick="cleandocs.toggleBtn(this)"><b>B</b></div>
   <div class="CDToggle" title="Underline" onclick="cleandocs.toggleBtn(this)"><u>U</u></div>
-  <div class="CDToggle" title="Italic" onclick="cleandocs.toggleBtn(this)"><var>I</var></div>`
+  <div class="CDToggle" title="Italic" onclick="cleandocs.toggleBtn(this)"><var>I</var></div>&nbsp;|
+  <div class="CDToggle active" title="Spellcheck" onclick="cleandocs.toggleBtn(this)"><svg style="width:10px" fill="#000000" viewBox="0 0 14 14" role="img" focusable="false" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="m 6.836416,8.898735 1.221032,0 -2.985394,-7.594938 -1.08666,0 L 1,8.898735 l 1.221032,0 0.654334,-1.752678 3.295034,0 0.666016,1.752678 z m -3.51704,-2.92113 1.209348,-3.224928 1.209348,3.224928 -2.418696,0 z m 8.856866,0.344694 -4.726388,4.726386 -2.14411,-2.14995 -0.823758,0.823758 2.97371,2.97371 L 13,7.146057 12.176242,6.322299 Z"></path></g></svg></div>
+  <p style="color:red" id="CDError"></p>`
     container.appendChild(controlsTop)
     var doc = document.createElement("div")
     doc.id = "doc"
@@ -95,6 +85,10 @@ input[type="color"] {
     doc.spellcheck = true
     doc.style = "width:100%;height:100%;"
     if (text) {doc.innerHTML = text}
+    if (expand) {
+      doc.style.height = "fit-content"
+      container.style.height = "fit-content"
+    }
     container.appendChild(doc)
     return container;
   },
@@ -109,11 +103,13 @@ input[type="color"] {
       elem.classList = "CDToggle"
       if (elem.parentElement.id == "controlsTop") {
 	switch (elem.title) {
-		case "Bold": elem.parentElement.parentElement.querySelector('#doc').style.fontWeight = "normal" 
+		case "Bold": cleandocs.editSelection('font-weight:normal')
 			break;
-		case "Underline": elem.parentElement.parentElement.querySelector('#doc').style.textDecoration = "none" 
+		case "Underline": cleandocs.editSelection('text-decoration:none')
 			break;
-		case "Italic": elem.parentElement.parentElement.querySelector('#doc').style.fontStyle = "normal" 
+		case "Italic": cleandocs.editSelection('font-style:normal')
+			break;
+		case "Spellcheck": elem.parentElement.parentElement.querySelector('#doc').spellcheck = false
 			break;
 	}
       }
@@ -121,28 +117,39 @@ input[type="color"] {
       elem.classList = "CDToggle active"
       if (elem.parentElement.id == "controlsTop") {
 	switch (elem.title) {
-		case "Bold": elem.parentElement.parentElement.querySelector('#doc').style.fontWeight = "bold" 
+		case "Bold": cleandocs.editSelection('font-weight:bold')
 			break;
-		case "Underline": elem.parentElement.parentElement.querySelector('#doc').style.textDecoration = "underline" 
+		case "Underline": cleandocs.editSelection('text-decoration:underline')
 			break;
-		case "Italic": elem.parentElement.parentElement.querySelector('#doc').style.fontStyle = "italic" 
+		case "Italic": cleandocs.editSelection('font-style:italic')
+			break;
+		case "Spellcheck": elem.parentElement.parentElement.querySelector('#doc').spellcheck = true
 			break;
 	}
       }
     }
   },
   editSelection: function(attr) {
-    var sel = window.getSelection(); // Gets selection
-    if (sel.rangeCount) {
-      // Creates a new element, and insert the selected text with the chosen font inside
-      var e = document.createElement('span');
-      e.style = attr
-      e.innerHTML = sel.toString();
-
-      // https://developer.mozilla.org/en-US/docs/Web/API/Selection/getRangeAt
-      var range = sel.getRangeAt(0);
-      range.deleteContents(); // Deletes selected text…
-      range.insertNode(e); // … and inserts the new element at its place
+    var sel = window.getSelection();
+    var selText = sel.toString()
+    var err = document.getElementById("CDError")
+    if (selText) {
+      err.innerHTML = ""
+      if (sel.rangeCount) {
+        var e = document.createElement('span');
+        e.style = attr
+        e.innerHTML = selText;
+        var range = sel.getRangeAt(0);
+        range.deleteContents();
+        range.insertNode(e);
+      } else {
+	err.innerHTML = "Something Went Wrong"
+      }
+    } else {
+      err.innerHTML = "Please Select Text"
+       setTimeout(function() {
+	       err.innerHTML = ""
+       },3000)
     }
   }
 }
