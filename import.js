@@ -84,7 +84,9 @@ input[type="color"] {
     <option value="'Redressed', cursive" style="font-family: 'Redressed', cursive;">Redressed</option>
     <option value="'Shippori Mincho', serif" style="font-family: 'Shippori Mincho', serif;">Shippori Mincho</option>
   </select>
-  <div class="CDToggle" title="Bold" onclick="cleandocs.toggleBtn(this)"><b>B</b></div>`
+  <div class="CDToggle" title="Bold" onclick="cleandocs.toggleBtn(this)"><b>B</b></div>
+  <div class="CDToggle" title="Underline" onclick="cleandocs.toggleBtn(this)"><u>U</u></div>
+  <div class="CDToggle" title="Italic" onclick="cleandocs.toggleBtn(this)"><var>I</var></div>`
     container.appendChild(controlsTop)
     var doc = document.createElement("div")
     doc.id = "doc"
