@@ -8,7 +8,7 @@ var cleandocs = {
         padding: 3px;
       }
       
-      input[type="color"] {
+input[type="color"] {
   height: 22px;
   background: none;
   border: none;
@@ -17,14 +17,20 @@ var cleandocs = {
   border-radius: 0;
   cursor: pointer
 }
-      </style>
+
+.CDflex {
+  display: flex;
+  gap: 5px;
+  border: solid black 1px;
+  background: white;
+}
+</style>
       `
     container.appendChild(hidden)
     var controlsTop = document.createElement("div")
     controlsTop.id = "controlsTop"
-    controlsTop.innerHTML = `
-      <div type="color" id="tcP" class="CDToggleBtn">Aa</div><input type="color" id="tc" onchange="this.parentElement.getElementById('tcP').style.color = this.value;this.parentElement.parentElement.getElementById('doc').style.color = this.value"> <div id="bc" type="color" class="CDToggleBtn">Aa</div><input type="color" id="bc" value="#ffffff" onchange="this.parentElement.parentElement.getElementById('controlsTop').getElementById(this.id).style.backgroundColor = this.value;this.parentElement.getElementById('doc').style.backgroundColor = this.value">
-    `
+    controlsTop.classList = "CDflex"
+    controlsTop.innerHTML = `<div type="color" id="tcP" class="CDToggleBtn">Aa</div><input type="color" id="tc" onchange="this.parentElement.getElementById('tcP').style.color = this.value;this.parentElement.parentElement.getElementById('doc').style.color = this.value"> <div id="bc" type="color" class="CDToggleBtn">Aa</div><input type="color" id="bc" value="#ffffff" onchange="this.parentElement.parentElement.getElementById('controlsTop').getElementById(this.id).style.backgroundColor = this.value;this.parentElement.getElementById('doc').style.backgroundColor = this.value">`
     container.appendChild(controlsTop)
     var doc = document.createElement("div")
     doc.id = "doc"
