@@ -6,9 +6,23 @@ var cleandocs = {
     hidden.innerHTML = `<style>
     @import url('https://fonts.googleapis.com/css2?family=Akaya+Telivigala&family=Josefin+Sans:wght@300&family=Nanum+Gothic:wght@700&family=Oswald:wght@300&family=Raleway:wght@200&family=Redressed&family=RocknRoll+One&family=Shippori+Mincho:wght@500&family=Stick&display=swap&family=DotGothic16&family=Open+Sans');
 
-      .CDToggleBtn {
+      .CDPrev {
         font-size: 15px;
         padding: 3px;
+      }
+
+      .CDToggle {
+        font-size: 15px;
+        padding: 3px;
+	border-radius: 3px;
+      }
+      .CDToggle:hover {
+        background: #636363;
+      }
+
+       
+      .CDToggle.active {
+        background: #636363;
       }
       
 input[type="color"] {
@@ -38,8 +52,8 @@ input[type="color"] {
     var controlsTop = document.createElement("div")
     controlsTop.id = "controlsTop"
     controlsTop.classList = "CDflex"
-    controlsTop.innerHTML = `<div type="color" id="tcP" class="CDToggleBtn">Aa</div><input type="color" id="tc" onchange="this.parentElement.querySelector('#tcP').style.color = this.value;this.parentElement.parentElement.querySelector('#doc').style.color = this.value">
-    <div id="bcP" type="color" class="CDToggleBtn">Aa</div><input type="color" id="bc" value="#ffffff" onchange="this.parentElement.parentElement.querySelector('#controlsTop').querySelector('#bcP').style.backgroundColor = this.value;this.parentElement.parentElement.querySelector('#doc').style.backgroundColor = this.value">
+    controlsTop.innerHTML = `<div type="color" id="tcP" class="CDPrev">Aa</div><input type="color" id="tc" onchange="this.parentElement.querySelector('#tcP').style.color = this.value;this.parentElement.parentElement.querySelector('#doc').style.color = this.value">
+    <div id="bcP" type="color" class="CDPrev">Aa</div><input type="color" id="bc" value="#ffffff" onchange="this.parentElement.parentElement.querySelector('#controlsTop').querySelector('#bcP').style.backgroundColor = this.value;this.parentElement.parentElement.querySelector('#doc').style.backgroundColor = this.value">
     <input id="size2" placeholder="15px" list="size-suggestions" onchange="this.parentElement.parentElement.querySelector('#doc').style.fontSize = this.value">
     <datalist id="size-suggestions">
 		<option value="15px">Normal Text</option>
@@ -69,7 +83,8 @@ input[type="color"] {
     <option style="font-family: 'Akaya Telivigala', cursive;" value="'Akaya Telivigala', cursive">Akaya Telivigala</option>
     <option value="'Redressed', cursive" style="font-family: 'Redressed', cursive;">Redressed</option>
     <option value="'Shippori Mincho', serif" style="font-family: 'Shippori Mincho', serif;">Shippori Mincho</option>
-  </select>`
+  </select>
+  <div class="CDToggle" title="Bold" onclick="cleandocs.toggleBtn(this)"><b>B</b></div>`
     container.appendChild(controlsTop)
     var doc = document.createElement("div")
     doc.id = "doc"
@@ -85,5 +100,26 @@ input[type="color"] {
   },
   getHTML: function(container) {
     return container.getElementById("doc").innerHTML
+  },
+  toggleBtn: function(elem) {
+    if (elem.classList == "CDToggle active") {
+      elem.classList = "CDToggle"
+      if (elem.parentElement.id == "controlsTop") {
+	switch (elem.title) {
+		case "Bold": elem.parentElement.parentElement.querySelector('#doc').style.fontWeight = "normal" break;
+		case "Underline": elem.parentElement.parentElement.querySelector('#doc').style.textDecoration = "none" break;
+		case "Italic": elem.parentElement.parentElement.querySelector('#doc').style.fontStyle = "none" break;
+	}
+      }
+    } else {
+      elem.classList = "CDToggle active"
+      if (elem.parentElement.id == "controlsTop") {
+	switch (elem.title) {
+		case "Bold": elem.parentElement.parentElement.querySelector('#doc').style.fontWeight = "bold" break;
+		case "Underline": elem.parentElement.parentElement.querySelector('#doc').style.textDecoration = "underline" break;
+		case "Italic": elem.parentElement.parentElement.querySelector('#doc').style.fontStyle = "italic" break;
+	}
+      }
+    }
   }
 }
