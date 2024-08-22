@@ -9,12 +9,6 @@
   font-family: 'Open Sans', sans-serif;
 }
 
-#txt {
-  font-size: 15px;
-  border: 1px solid;
-  border-bottom-width: 0px;
-}
-
 input[type="color"] {
   width: 100px;
 }
