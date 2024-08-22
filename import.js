@@ -2,29 +2,37 @@ var cleandocs = {
   createBox: function(container,text) {
     var hidden = document.createElement("span")
     hidden.hidden = true
-    hidden.innerHTML = `<input type="color" id="tc" onchange="this.parentElement.getElementById('controlsTop').getElementById(this.id).style.color = this.value;this.parentElement.getElementById('doc').style.color = this.value"><input type="color" id="bc" value="#ffffff" onchange="this.parentElement.getElementById('controlsTop').getElementById(this.id).style.backgroundColor = this.value;this.parentElement.getElementById('doc').style.backgroundColor = this.value"><style>
+    hidden.innerHTML = `<style>
       .CDToggleBtn {
         font-size: 15px;
         padding: 3px;
-        border-radius: 3px;
       }
       
-      .CDToggleBtn:hover {
-        background: rgba(0,0,0,0.5)
-      }
+      input[type="color"] {
+  height: 22px;
+  background: none;
+  border: none;
+  padding: 0;
+  width: 22px;
+  border-radius: 0;
+  cursor: pointer
+}
       </style>
       `
     container.appendChild(hidden)
     var controlsTop = document.createElement("div")
     controlsTop.id = "controlsTop"
     controlsTop.innerHTML = `
-      <div onclick="cleandocs.buttonClick(this)" type="color" id="tc" class="CDToggleBtn">Aa</div> <div onclick="cleandocs.buttonClick(this)" id="bc" type="color" class="CDToggleBtn">Aa</div>
+      <div type="color" id="tcP" class="CDToggleBtn">Aa</div><input type="color" id="tc" onchange="this.parentElement.getElementById('tcP').style.color = this.value;this.parentElement.parentElement.getElementById('doc').style.color = this.value"> <div id="bc" type="color" class="CDToggleBtn">Aa</div><input type="color" id="bc" value="#ffffff" onchange="this.parentElement.parentElement.getElementById('controlsTop').getElementById(this.id).style.backgroundColor = this.value;this.parentElement.getElementById('doc').style.backgroundColor = this.value">
     `
+    container.appendChild(controlsTop)
     var doc = document.createElement("div")
     doc.id = "doc"
     doc.contentEditable = true
     doc.spellcheck = true
+    doc.style = "width:100%;height:100%;"
     if (text) {doc.innerHTML = text}
+    container.appendChild(doc)
     return container;
   },
   getText: function(container) {
@@ -32,10 +40,5 @@ var cleandocs = {
   },
   getHTML: function(container) {
     return container.getElementById("doc").innerHTML
-  },
-  buttonClick: function(elem) {
-    if (elem.type == "color") {
-      
-    }
   }
 }
