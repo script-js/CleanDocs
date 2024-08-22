@@ -56,7 +56,7 @@ input[type="color"] {
     <option value="'Open Sans', sans-serif" style="font-family: 'Open Sans', sans-serif;">OpenSans</option>
     <option style="font-family: 'Times New Roman', Times, serif" value="'Times New Roman', Times, serif">Times New Roman</option>
     <option value="sans-serif" style="font-family: sans-serif;">Sans-Serif</option>
-    <option value="cursive" style="font-family: cursive;">Bubbles</option>
+    <option value="cursive" style="font-family: cursive;">Comic Sans MS</option>
     <option value="'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif" style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif">Trebuchet MS</option>
     <option value="'DotGothic16', sans-serif" style="font-family: 'DotGothic16', sans-serif;">DotGothic16</option>
     <option value="'Josefin Sans', sans-serif" style="font-family: 'Josefin Sans', sans-serif;">Josefin Sans</option>
