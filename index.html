@@ -174,20 +174,17 @@ function openLink(thelink) {
 
 function insert_lis() {
   txt.innerHTML = txt.innerHTML + "<ul><ul><li>" + listxt2.value + "</li></ul></ul>";
-  replaceBadContent()
 }
 
 function insert_lis2() {
   txt.innerHTML = txt.innerHTML + "<li>" + listxt.value + "</li>";
-  replaceBadContent()
 }
 
 function end_lis() {
   txt.innerHTML = txt.innerHTML + "</ul>"
 } 
 
-function insert_yt() {
-  replaceBadContent();
+function insert_yt() {;
   txt.innerHTML = txt.innerHTML + '<iframe width="560" height="315" src="https://youtube.com/embed/' + ytlink.value.replace("https://www.youtube.com/watch?v=","") + '" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
 }
 
@@ -240,20 +237,14 @@ function itcheck2() {
 }
 
 function insert_span() {
-  txt.innerHTML = txt.innerHTML + '<span style="' +  "color: " + tc2.value + "; background-color: " + bc2.value + ";   font-family: " + font2.value + "; font-size: " + size2.value + "; font-weight: " + boldcheck() + "; text-decoration: " + undercheck() + "; font-style: " + itcheck() + ';">(highlight me and type)</span>';
-  replaceBadContent();
+  txt.innerHTML = txt.innerHTML + '<span style="' +  "color: " + tc2.value + "; background-color: " + bc2.value + ";   font-family: " + font2.value + "; font-size: " + size2.value + "; font-weight: " + boldcheck() + "; text-decoration: " + undercheck() + "; font-style: " + itcheck() + ';">(highlight me and type)</span>';;
 }
 
 function set_title() {
-  txt.innerHTML =  "<title>CleanDocs - " + doctit.value + "</title>" + txt.innerHTML;
-  replaceBadContent();
+  txt.innerHTML =  "<title>CleanDocs - " + doctit.value + "</title>" + txt.innerHTML;;
 }
 
 doctit.value = document.title.replace("CleanDocs - ","");
-
-function replaceBadContent() {
-  txt.innerHTML = txt.innerHTML.replace("%"," percent");
-}
 
 function bsic() {
   txt.style = "width: 100%; height: " + bxsz.value + "px;";
