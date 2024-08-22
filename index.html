@@ -64,7 +64,6 @@
   <button onclick="check()">Print</button>
   <button onclick="window.open('read.html?text=' + txt.innerText)">Read (Expirimental)</button>
   <button onclick="location.replace('editor.html?code=' + encodeURI(txt.innerHTML))">Edit as HTML</button>
-  Box Size: <input type="range" id="bxsz" min="400" max="5000" onchange="bsic()" width="180" value="400">
   </div>
   <div id="insertc" style="display: none">
     Image: <input placeholder="URL" id="imgurl"><button onclick="insert_img()">Insert</button>
@@ -151,12 +150,15 @@ function check() {
 var li = window.location.href;
 
 var li = new URLSearchParams(window.location.search).get("text");
-
-var link = atob(li.replaceAll(" ","+"));
+try {
+  var link = atob(li.replaceAll(" ","+"));
+} catch(e) {
+  var link;
+}
 if (link) {
-  cleandocs.createBox(txt,link)
+  cleandocs.createBox(txt,link,true)
 } else {
-  cleandocs.createBox(txt)
+  cleandocs.createBox(txt,true)
 }
 lin.value = location.href;
 
