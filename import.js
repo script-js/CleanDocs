@@ -88,6 +88,7 @@ input[type="color"] {
     if (expand) {
       doc.style.height = "fit-content"
       container.style.height = "fit-content"
+      if (!text) {doc.innerHTML = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n"}
     }
     container.appendChild(doc)
     return container;
