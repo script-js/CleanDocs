@@ -141,7 +141,7 @@ function sc() {
 }
 
 function ls() {
-  location.replace("?text=" + btoa(txt.innerHTML))
+  location.replace("?text=" + btoa(cleandocs.getHTML(txt)))
 }
 
 function check() {
