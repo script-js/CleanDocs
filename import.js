@@ -30,7 +30,7 @@ input[type="color"] {
     var controlsTop = document.createElement("div")
     controlsTop.id = "controlsTop"
     controlsTop.classList = "CDflex"
-    controlsTop.innerHTML = `<div type="color" id="tcP" class="CDToggleBtn">Aa</div><input type="color" id="tc" onchange="this.parentElement.getElementById('tcP').style.color = this.value;this.parentElement.parentElement.getElementById('doc').style.color = this.value"> <div id="bcP" type="color" class="CDToggleBtn">Aa</div><input type="color" id="bc" value="#ffffff" onchange="this.parentElement.parentElement.getElementById('controlsTop').getElementById('bcP').style.backgroundColor = this.value;this.parentElement.getElementById('doc').style.backgroundColor = this.value">`
+    controlsTop.innerHTML = `<div type="color" id="tcP" class="CDToggleBtn">Aa</div><input type="color" id="tc" onchange="this.parentElement.querySelector('#tcP').style.color = this.value;this.parentElement.parentElement.querySelector('#doc').style.color = this.value"> <div id="bcP" type="color" class="CDToggleBtn">Aa</div><input type="color" id="bc" value="#ffffff" onchange="this.parentElement.parentElement.querySelector('#controlsTop').querySelector('#bcP').style.backgroundColor = this.value;this.parentElement.querySelector('#doc').style.backgroundColor = this.value">`
     container.appendChild(controlsTop)
     var doc = document.createElement("div")
     doc.id = "doc"
