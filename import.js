@@ -106,9 +106,12 @@ input[type="color"] {
       elem.classList = "CDToggle"
       if (elem.parentElement.id == "controlsTop") {
 	switch (elem.title) {
-		case "Bold": elem.parentElement.parentElement.querySelector('#doc').style.fontWeight = "normal" break;
-		case "Underline": elem.parentElement.parentElement.querySelector('#doc').style.textDecoration = "none" break;
-		case "Italic": elem.parentElement.parentElement.querySelector('#doc').style.fontStyle = "none" break;
+		case "Bold": elem.parentElement.parentElement.querySelector('#doc').style.fontWeight = "normal" 
+			break;
+		case "Underline": elem.parentElement.parentElement.querySelector('#doc').style.textDecoration = "none" 
+			break;
+		case "Italic": elem.parentElement.parentElement.querySelector('#doc').style.fontStyle = "none" 
+			break;
 	}
       }
     } else {
