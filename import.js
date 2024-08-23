@@ -155,7 +155,33 @@ var cleandocs = {
       err.innerHTML = ""
       if (sel.rangeCount) {
         var e = document.createElement('span');
-        e.style = attr
+        e.style = attr;
+	e.onmousedown = function() {
+		tc.value = this.style.color
+		tcP.style.color = this.style.color
+		bc.value = this.style.backgroundColor
+		bcP.style.backgroundColor = this.style.backgroundColor
+		size2.value = this.style.fontSize
+		font2.value = this.style.fontFamily
+		var bElem = document.querySelector(".CDToggle[title='Bold']")
+		var uElem = document.querySelector(".CDToggle[title='Underline']")
+		var iElem = document.querySelector(".CDToggle[title='Bold']")
+		if (this.style.fontWeight == "bold") {
+		  bElem.classList = "CDToggle active"
+		} else {
+		  bElem.classList = "CDToggle"
+		}
+		if (this.style.fontStyle == "italic") {
+		  iElem.classList = "CDToggle active"
+		} else {
+		  iElem.classList = "CDToggle"
+		}
+		if (this.style.textDecoration == "underline") {
+		  uElem.classList = "CDToggle active"
+		} else {
+		  uElem.classList = "CDToggle"
+		}
+	}
         e.innerHTML = selText;
         var range = sel.getRangeAt(0);
         range.deleteContents();
@@ -163,11 +189,14 @@ var cleandocs = {
       } else {
 	err.innerHTML = "Something Went Wrong"
       }
+      sel.removeAllRanges()
+	    return true;
     } else {
       err.innerHTML = "Please Select Text"
        setTimeout(function() {
 	       err.innerHTML = ""
        },3000)
+	    return false;
     }
   },
   insert: function(container,type,attr) {
