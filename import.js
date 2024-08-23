@@ -157,6 +157,7 @@ var cleandocs = {
         var e = document.createElement('span');
         e.style = attr;
 	e.onmousedown = function() {
+		console.log(this)
 		tc.value = this.style.color
 		tcP.style.color = this.style.color
 		bc.value = this.style.backgroundColor
