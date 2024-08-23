@@ -115,9 +115,6 @@ var cleandocs = {
   getHTML: function(container) {
     return container.querySelector("#doc").innerHTML
   },
-  getBox: function(container) {
-    return container.querySelector("#doc")
-  },
   toggleBtn: function(elem) {
     if (elem.classList == "CDToggle active") {
       elem.classList = "CDToggle"
@@ -171,5 +168,14 @@ var cleandocs = {
 	       err.innerHTML = ""
        },3000)
     }
+  },
+  insert: function(container,type,attr) {
+    var elem = document.createElement(type)
+    Object.keys(attr).forEach(function(k,index,array) {
+      elem.setAttribute(k,attr[k])
+      if (index == array.length - 1) {
+        container.querySelector("#doc").appendChild(elem)
+      }
+    })
   }
 }
