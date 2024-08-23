@@ -38,13 +38,14 @@ var cleandocs = {
 }
 
 #controlsTop input,select {
-  transition: ease 100ms
+  transition: ease 100ms;
 }
 
 #controlsTop select {
   background: none;
   border: none;
   border-radius: 5px;
+  cursor: pointer
 }
 
 #controlsTop select:hover {
