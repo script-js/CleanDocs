@@ -78,7 +78,7 @@ input[type="color"] {
   <div class="CDToggle" title="Underline" onclick="cleandocs.toggleBtn(this)"><u>U</u></div>
   <div class="CDToggle" title="Italic" onclick="cleandocs.toggleBtn(this)"><var>I</var></div>&nbsp;|
   <div class="CDToggle active" title="Spellcheck" onclick="cleandocs.toggleBtn(this)"><svg style="width:13px" fill="#000000" viewBox="0 0 14 14" role="img" focusable="false" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="m 6.836416,8.898735 1.221032,0 -2.985394,-7.594938 -1.08666,0 L 1,8.898735 l 1.221032,0 0.654334,-1.752678 3.295034,0 0.666016,1.752678 z m -3.51704,-2.92113 1.209348,-3.224928 1.209348,3.224928 -2.418696,0 z m 8.856866,0.344694 -4.726388,4.726386 -2.14411,-2.14995 -0.823758,0.823758 2.97371,2.97371 L 13,7.146057 12.176242,6.322299 Z"></path></g></svg></div>
-  <p style="color:red" id="CDError"></p>`
+  <span style="color:red" id="CDError"></span>`
     container.appendChild(controlsTop)
     var doc = document.createElement("div")
     doc.id = "doc"
