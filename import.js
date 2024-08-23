@@ -156,6 +156,7 @@ var cleandocs = {
       if (sel.rangeCount) {
         var e = document.createElement('span');
         e.style = attr;
+	e.classList = "selection"
 	e.onmousedown = function() {
 		console.log(this)
 		tc.value = this.style.color
