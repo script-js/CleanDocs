@@ -56,7 +56,7 @@ input[type="color"] {
     controlsTop.classList = "CDflex"
     controlsTop.innerHTML = `<div type="color" id="tcP" class="CDPrev">Aa</div><input type="color" id="tc" onchange="this.parentElement.querySelector('#tcP').style.color = this.value;cleandocs.editSelection('color:' + this.value)"> |
     <div id="bcP" type="color" class="CDPrev">Aa</div><input type="color" id="bc" value="#ffffff" onchange="this.parentElement.parentElement.querySelector('#controlsTop').querySelector('#bcP').style.backgroundColor = this.value;cleandocs.editSelection('background-color:' + this.value)"> |
-    <input id="size2" min="10" max="100" type="range" onchange="cleandocs.editSelection('font-size:' + this.value + 'px')"> |
+    <input id="size2" min="10" max="100" type="range" onchange="this.parentElement.querySelector('#sizeP').innerHTML = this.value;cleandocs.editSelection('font-size:' + this.value + 'px')"> <span id="sizeP">15</span> |
   <select id="font2" onchange="cleandocs.editSelection('font-family:' + this.value)">
     <option value="'Open Sans', sans-serif" style="font-family: 'Open Sans', sans-serif;">OpenSans</option>
     <option style="font-family: 'Times New Roman', Times, serif" value="'Times New Roman', Times, serif">Times New Roman</option>
