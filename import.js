@@ -115,6 +115,9 @@ var cleandocs = {
   getHTML: function(container) {
     return container.querySelector("#doc").innerHTML
   },
+  getBox: function(container) {
+    return container.querySelector("#doc")
+  },
   toggleBtn: function(elem) {
     if (elem.classList == "CDToggle active") {
       elem.classList = "CDToggle"
