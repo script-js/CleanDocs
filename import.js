@@ -19,7 +19,7 @@ var cleandocs = {
 	transition: ease 100ms;
       }
       .CDToggle:hover {
-        background: #636363;
+        background: #aeaeb0;
       }
 
        
@@ -27,7 +27,7 @@ var cleandocs = {
         background: #636363;
       }
       
-input[type="color"] {
+#controlsTop input[type="color"] {
   height: 22px;
   background: none;
   border: none;
@@ -35,6 +35,20 @@ input[type="color"] {
   width: 22px;
   border-radius: 0;
   cursor: pointer
+}
+
+#controlsTop input,select {
+  transition: ease 100ms
+}
+
+#controlsTop select {
+  background: none;
+  border: none;
+  border-radius: 5px;
+}
+
+#controlsTop select:hover {
+  background: #e9e9ed;
 }
 
 .CDflex {
