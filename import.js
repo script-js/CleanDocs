@@ -96,10 +96,10 @@ input[type="color"] {
     return container;
   },
   getText: function(container) {
-    return container.getElementById("doc").innerText
+    return container.querySelector("#doc").innerText
   },
   getHTML: function(container) {
-    return container.getElementById("doc").innerHTML
+    return container.querySelector("#doc").innerHTML
   },
   toggleBtn: function(elem) {
     if (elem.classList == "CDToggle active") {
