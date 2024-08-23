@@ -16,6 +16,7 @@ var cleandocs = {
         padding: 5px;
 	border-radius: 3px;
         cursor: pointer;
+	transition: ease 100ms;
       }
       .CDToggle:hover {
         background: #636363;
