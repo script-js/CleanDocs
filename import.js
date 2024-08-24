@@ -161,11 +161,18 @@ var cleandocs = {
 	e.onmousedown = function() {
 		console.log(this)
 		tc.value = this.style.color
+		console.log(this.style.color)
 		tcP.style.color = this.style.color
 		bc.value = this.style.backgroundColor
+		console.log(this.style.backgroundColor)
 		bcP.style.backgroundColor = this.style.backgroundColor
 		size2.value = parseInt(this.style.fontSize)
+		console.log(parseInt(this.style.fontSize))
 		font2.value = this.style.fontFamily
+		console.log(this.style.fontFamily)
+		console.log(this.style.fontWeight)
+		console.log(this.style.fontStyle)
+		console.log(this.style.textDecoration)
 		var bElem = document.querySelector(".CDToggle[title='Bold']")
 		var uElem = document.querySelector(".CDToggle[title='Underline']")
 		var iElem = document.querySelector(".CDToggle[title='Bold']")
