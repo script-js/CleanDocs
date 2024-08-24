@@ -44,6 +44,7 @@ var cleandocs = {
 #controlsTop select {
   background: none;
   border: none;
+  color: black;
   border-radius: 5px;
   cursor: pointer
 }
@@ -63,6 +64,7 @@ var cleandocs = {
 #doc {
   font-family: 'Open Sans', sans-serif;
   font-size: 15px;
+  word-wrap: break-word;
 }
 </style>
       `
@@ -118,16 +120,15 @@ var cleandocs = {
   },
   toggleBtn: function(elem) {
     if (elem.classList == "CDToggle active") {
-      elem.classList = "CDToggle"
       if (elem.parentElement.id == "controlsTop") {
 	switch (elem.title) {
-		case "Bold": cleandocs.editSelection('font-weight:normal')
+		case "Bold": if (cleandocs.editSelection('font-weight:normal')) {elem.classList = "CDToggle"}
 			break;
-		case "Underline": cleandocs.editSelection('text-decoration:none')
+		case "Underline": if (cleandocs.editSelection('text-decoration:none')) {elem.classList = "CDToggle"}
 			break;
-		case "Italic": cleandocs.editSelection('font-style:normal')
+		case "Italic": if (cleandocs.editSelection('font-style:normal')) {elem.classList = "CDToggle"}
 			break;
-		case "Spellcheck": elem.parentElement.parentElement.querySelector('#doc').spellcheck = false
+		case "Spellcheck": elem.parentElement.parentElement.querySelector('#doc').spellcheck = false; elem.classList = "CDToggle";
 			break;
 	}
       }
@@ -135,13 +136,13 @@ var cleandocs = {
       elem.classList = "CDToggle active"
       if (elem.parentElement.id == "controlsTop") {
 	switch (elem.title) {
-		case "Bold": cleandocs.editSelection('font-weight:bold')
+		case "Bold": if (cleandocs.editSelection('font-weight:bold')) {elem.classList = "CDToggle"}
 			break;
-		case "Underline": cleandocs.editSelection('text-decoration:underline')
+		case "Underline": if (cleandocs.editSelection('text-decoration:underline')) {elem.classList = "CDToggle"}
 			break;
-		case "Italic": cleandocs.editSelection('font-style:italic')
+		case "Italic": if (cleandocs.editSelection('font-style:italic')) {elem.classList = "CDToggle"}
 			break;
-		case "Spellcheck": elem.parentElement.parentElement.querySelector('#doc').spellcheck = true
+		case "Spellcheck": elem.parentElement.parentElement.querySelector('#doc').spellcheck = true; elem.classList = "CDToggle";
 			break;
 	}
       }
@@ -163,7 +164,7 @@ var cleandocs = {
 		tcP.style.color = this.style.color
 		bc.value = this.style.backgroundColor
 		bcP.style.backgroundColor = this.style.backgroundColor
-		size2.value = this.style.fontSize
+		size2.value = parseInt(this.style.fontSize)
 		font2.value = this.style.fontFamily
 		var bElem = document.querySelector(".CDToggle[title='Bold']")
 		var uElem = document.querySelector(".CDToggle[title='Underline']")
