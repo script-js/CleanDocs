@@ -160,36 +160,45 @@ var cleandocs = {
 	e.classList = "selection"
 	e.onmousedown = function() {
 		console.log(this)
-		tc.value = this.style.color
-		console.log(this.style.color)
-		tcP.style.color = this.style.color
-		bc.value = this.style.backgroundColor
-		console.log(this.style.backgroundColor)
-		bcP.style.backgroundColor = this.style.backgroundColor
-		size2.value = parseInt(this.style.fontSize)
-		console.log(parseInt(this.style.fontSize))
-		font2.value = this.style.fontFamily
-		console.log(this.style.fontFamily)
-		console.log(this.style.fontWeight)
-		console.log(this.style.fontStyle)
-		console.log(this.style.textDecoration)
+		if (this.style.color) {
+		  tc.value = this.style.color
+		  tcP.style.color = this.style.color
+		}
+		if (this.style.backgroundColor) {
+		  bc.value = this.style.backgroundColor
+		  bcP.style.backgroundColor = this.style.backgroundColor
+		}
+		if (this.style.fontSize) {
+		  size2.value = parseInt(this.style.fontSize)
+		  sizeP.innerHTML = parseInt(this.style.fontSize)
+		}
+		if (this.style.fontFamily) {
+		  font2.value = this.style.fontFamily
+		}
 		var bElem = document.querySelector(".CDToggle[title='Bold']")
 		var uElem = document.querySelector(".CDToggle[title='Underline']")
 		var iElem = document.querySelector(".CDToggle[title='Bold']")
+		if (this.style.fontWeight) {
 		if (this.style.fontWeight == "bold") {
+		  console.log("a")
 		  bElem.classList = "CDToggle active"
 		} else {
 		  bElem.classList = "CDToggle"
 		}
+		}
+		if (this.style.fontStyle) {
 		if (this.style.fontStyle == "italic") {
 		  iElem.classList = "CDToggle active"
 		} else {
 		  iElem.classList = "CDToggle"
 		}
+		}
+		if (this.style.textDecoration) {
 		if (this.style.textDecoration == "underline") {
 		  uElem.classList = "CDToggle active"
 		} else {
 		  uElem.classList = "CDToggle"
+		}
 		}
 	}
         e.innerHTML = selText;
